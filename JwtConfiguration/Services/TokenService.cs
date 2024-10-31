@@ -3,12 +3,12 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using UsersWebApi.Interfaces;
-using UsersWebApi.Models;
+using JwtConfiguration.Interfaces;
+using JwtConfiguration.Models;
 
-namespace UsersWebApi.Services
-{
-    public class TokenService(IOptions<TokenOptions> options, IUserRepository userRepository) : ITokenService
+namespace JwtConfiguration.Services
+{   
+    public class TokenService(IOptions<TokenOptions> options) : ITokenService
     {
         private readonly TokenOptions _tokenOptions = options.Value;
 

@@ -4,6 +4,8 @@ using UsersWebApi.Extensions;
 using UsersWebApi.Interfaces;
 using UsersWebApi.Models;
 using UsersWebApi.Requests;
+using JwtConfiguration.Interfaces;
+using JwtConfiguration.Models;
 
 namespace UsersWebApi.Services
 {

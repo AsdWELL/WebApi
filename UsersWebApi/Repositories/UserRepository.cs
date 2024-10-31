@@ -57,10 +57,7 @@ namespace UsersWebApi.Repositories
             var filter = Builders<DBUser>.Filter.Eq(x => x.Id, user.Id);
 
             var updatesBuilder = Builders<DBUser>.Update;
-            var updates = new List<UpdateDefinition<DBUser>>
-            {
-                updatesBuilder.Set(x => x.HashedPassword, user.HashedPassword)
-            };
+            var updates = new List<UpdateDefinition<DBUser>>();
 
             if (user.Name != null)
                 updates.Add(updatesBuilder.Set(x => x.Name, user.Name));
@@ -70,6 +67,9 @@ namespace UsersWebApi.Repositories
 
             if (user.Login != null)
                 updates.Add(updatesBuilder.Set(x => x.Login, user.Login));
+
+            if (user.HashedPassword != null)
+                updatesBuilder.Set(x => x.HashedPassword, user.HashedPassword);
 
             await _usersCollection.UpdateOneAsync(filter, updatesBuilder.Combine(updates));
         }

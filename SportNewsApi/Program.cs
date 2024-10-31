@@ -4,6 +4,7 @@ using SportNewsWebApi.Models;
 using SportNewsWebApi.Repositories;
 using SportNewsWebApi.Services;
 using Microsoft.OpenApi.Models;
+using JwtConfiguration.Extensions;
 
 namespace SportNewsWebApi
 {
@@ -25,6 +26,8 @@ namespace SportNewsWebApi
                                     Description = $"Лр№4 Годов, Поршнев"
                                 });
                             });
+
+            builder.Services.AddJWTAuth();
 
             builder.Services.AddDistributedMemoryCache();
             builder.Services.Configure<MongoDBSettings>(
@@ -49,6 +52,9 @@ namespace SportNewsWebApi
                    options.SwaggerEndpoint("/swagger/SportNews/swagger.json", "SportNews WebApi");
                    options.RoutePrefix = string.Empty;
                });
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.MapControllers();
             app.Run();

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Options;
 using UsersWebApi.Interfaces;
 using UsersWebApi.Requests;
-using UsersWebApi.Models;
+using JwtConfiguration.Models;
 
 namespace UsersWebApi.Controllers
 {

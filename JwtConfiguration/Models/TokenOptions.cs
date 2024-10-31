@@ -1,4 +1,4 @@
-﻿namespace UsersWebApi.Models
+﻿namespace JwtConfiguration.Models
 {
     public class TokenOptions
     {

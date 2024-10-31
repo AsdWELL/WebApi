@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using UsersWebApi.Extensions;
 using UsersWebApi.Interfaces;
 using UsersWebApi.Repositories;
+using JwtConfiguration.Extensions;
 
 namespace UsersWebApi
 {
@@ -25,12 +26,9 @@ namespace UsersWebApi
                             });
 
             builder.Services.Configure<MongoDBSettings>(
-                builder.Configuration.GetRequiredSection("SportNewsDB"));
+                builder.Configuration.GetRequiredSection("UsersDB"));
 
-            var authSection = builder.Configuration.GetRequiredSection(nameof(TokenOptions));
-
-            builder.Services.Configure<TokenOptions>(authSection);
-            builder.Services.AddJWTAuth(authSection.Get<TokenOptions>());
+            builder.Services.AddJWTAuth();
 
             builder.Services.AddSingleton<IUserRepository, UserRepository>();
             builder.Services.AddServices();
@@ -54,9 +52,12 @@ namespace UsersWebApi
             app.UseSwagger()
                .UseSwaggerUI(options =>
                {
-                   options.SwaggerEndpoint("/swagger/Users/swagger.json", "SportNews WebApi");
+                   options.SwaggerEndpoint("/swagger/Users/swagger.json", "Users WebApi");
                    options.RoutePrefix = string.Empty;
                });
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.MapControllers();
             app.Run();

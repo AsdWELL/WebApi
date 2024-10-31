@@ -1,4 +1,4 @@
-﻿namespace UsersWebApi.Interfaces
+﻿namespace JwtConfiguration.Interfaces
 {
     public interface IPasswordHasher
     {

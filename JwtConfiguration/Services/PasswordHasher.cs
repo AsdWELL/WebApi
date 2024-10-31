@@ -1,7 +1,7 @@
 ﻿using BCrypt.Net;
-using UsersWebApi.Interfaces;
+using JwtConfiguration.Interfaces;
 
-namespace UsersWebApi.Services
+namespace JwtConfiguration.Services
 {
     public class PasswordHasher : IPasswordHasher
     {

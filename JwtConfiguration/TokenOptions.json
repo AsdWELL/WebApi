@@ -1,0 +1,9 @@
+{
+  "TokenOptions": {
+    "Issuer": "UsersWebApi",
+    "Audience": "Service",
+    "Key": "vRVyNoHR2uFzOyhxwGXYdrqUvyYFZlczFh3cAcrS",
+    "ExpiresAfterHours": 24,
+    "CookieTitle": "xPgvcTwweHMk"
+  }
+}

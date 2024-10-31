@@ -1,6 +1,6 @@
-﻿using UsersWebApi.Models;
+﻿using JwtConfiguration.Models;
 
-namespace UsersWebApi.Interfaces
+namespace JwtConfiguration.Interfaces
 {
     public interface ITokenService
     {
