@@ -29,12 +29,6 @@ namespace Tests
         }
 
         [Fact]
-        public async Task Add100() => await Add(100);
-
-        [Fact]
-        public async Task Add100000() => await Add(10000);
-
-        [Fact]
         public async Task DeleteAll()
         {
             var sportNews = await _service.GetAll();
@@ -59,7 +53,10 @@ namespace Tests
                 _ = await _service.GetById(1);
         }
 
-        private async Task Add(int count)
+        [Theory]
+        [InlineData(100)]
+        [InlineData(10000)]
+        public async Task Add(int count)
         {
             CreateSportNewsRequest request = new CreateSportNewsRequest
             {
